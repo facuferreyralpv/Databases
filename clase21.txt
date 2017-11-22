@@ -1,0 +1,117 @@
+3 - Write examples with string
+redis:6379> SET nombre facu
+OK
+redis:6379> GET nombre
+"facu"
+
+redis:6379> APPEND nombre "ferreyra"
+(integer) 12
+redis:6379> GET nombre
+"facuferreyra"
+
+---------------------------------------
+
+4 - Write examples with hashes
+redis:6379> HMSET person name last-name
+OK
+redis:6379> HGETALL person
+1) "name"
+2) "last-name"
+"
+-------------------------------------
+
+redis:6379> HSET person field1 "foo"
+(integer) 1
+ HSET person field2 "hola"
+redis:6379> HSET person field2 "hola"
+(integer) 1
+
+redis:6379> HEXISTS person field1
+(integer) 1
+
+redis:6379> HEXISTS person field2
+(integer) 1
+
+redis:6379> HEXISTS person field3
+(integer) 0
+-----------------------------------
+5 - Write examples with Lists
+redis:6379> LPUSH names "marta"
+(integer) 1
+redis:6379> LPUSH names "marto"
+(integer) 2
+redis:6379> LPUSH names "marco"
+(integer) 3
+redis:6379> LPUSH names "marca"
+(integer) 4
+redis:6379> LRANGE names 0 10
+1) "marca"
+2) "marco"
+3) "marto"
+4) "marta"
+
+-------------------------------------
+6 - Write examples with Sets
+
+redis:6379> RPUSH list1 "foo"
+(integer) 1
+redis:6379> RPUSH list1 "faa"
+(integer) 2
+redis:6379> RPUSH list1 "feee"
+(integer) 3
+redis:6379> LINSERT list1 BEFORE "feee" "esta"
+(integer) 4
+redis:6379> LRANGE list1 0 -1
+1) "foo"
+2) "faa"
+3) "esta"
+4) "feee"
+
+7 - Write examples with Sorted Sets
+
+redis:6379> ZADD ndsas 1 sn
+(integer) 1
+redis:6379> ZADD ndsas 2 sns
+(integer) 1
+redis:6379> ZADD ndsas 3 snss
+(integer) 1
+redis:6379> ZADD ndsas 4 snss
+(integer) 0
+redis:6379> ZRANGE ndsas 0 10 WITHSCORES
+1) "sn"
+2) "1"
+3) "sns"
+4) "2"
+5) "snss"
+6) "4"
+---------------------------------------
+
+redis:6379> ZADD myzset a b c d 1 2 3
+(error) ERR syntax error
+redis:6379> ZADD myzset 1 b 2 c 3 d 4 e
+(integer) 4
+redis:6379> ZSCORE myzset "c"
+"2"
+redis:6379> ZSCORE myzset "y"
+(nil)
+redis:6379> 
+---------------------------------------
+redis 127.0.0.1:6379> ZADD myzset 0 a 1 b 2 c 3 d 4 e 
+(integer) 5 
+redis 127.0.0.1:6379> ZADD myzset 5 f 6 g 
+(integer) 2 
+redis 127.0.0.1:6379> ZRANK myzset b 
+(integer) 1 
+redis 127.0.0.1:6379> ZRANK myzset t 
+(nil)
+
+8 - Write examples using Publish Subscribe
+
+
+
+
+
+
+
+
+
